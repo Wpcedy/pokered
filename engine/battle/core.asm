@@ -1544,6 +1544,8 @@ TrainerSentOutText:
 AnyPartyAlive:
 	ld a, [wPartyCount]
 	ld e, a
+	ld a, [wEnemyPartyCount]
+	ld d, a
 	xor a
 	ld hl, wPartyMon1HP
 	ld bc, wPartyMon2 - wPartyMon1 - 1
@@ -1551,10 +1553,17 @@ AnyPartyAlive:
 	or [hl]
 	inc hl
 	or [hl]
+	jr nz, .naoTaMorto
+	dec d
+	jr z, .retorna
+.naoTaMorto
+	xor a
 	add hl, bc
 	dec e
 	jr nz, .partyMonsLoop
+	ld a, 1
 	ld d, a
+.retorna
 	ret
 
 ; tests if player mon has fainted

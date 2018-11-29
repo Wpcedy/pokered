@@ -1,5 +1,5 @@
 _OakSpeechText1::
-	text "Hello there!"
+	text "Companheiro"
 	line "Welcome to the"
 	cont "world of #MON!"
 
